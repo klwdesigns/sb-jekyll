@@ -1,0 +1,37 @@
+---
+layout: default
+ref: index
+lang: en
+---
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+     <div class="toggle-container">
+          <input type="checkbox" id="switch" name="theme"><label for="switch">Toggle</label>
+     </div>
+     <div class="" style="text-align: right; line-height: 2em">
+         {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
+         {% for post in posts %} <a href="{{ post.url | prepend: site.baseurl }}" class="{{ post.lang }}">{{ post.lang }}</a> {% endfor %}
+
+         {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}
+         {% for page in pages %} <a href="{{ page.url | prepend: site.baseurl }}" class="{{ page.lang }}">{{ page.lang }}</a> {% endfor %}
+     </div>
+
+     <div class="one-half column" style="margin-top: 25%">
+          <h1>Saint-Bisou</h1>
+          <p>Where peace and righteousness kiss.
+          <br>Commentary. Stories. Faith.</p>
+          <hr>
+          <div class="posts">
+               {% assign posts=site.posts | where:"lang", page.lang %}
+               {% for post in posts %}
+          		<div class="post-entry">
+          			<span class="post-entry-date">{% include date.html date=post.date %}</span>
+          			<a href="{{ post.url | absolute_url }}" rel="permalink">{{ post.title }}</a>
+          		</div>
+          	{% endfor %}
+          </div>
+     </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->

@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<div class="header">
+	<div><a style="font-size: 1.2rem" href="{{ '/' | absolute_url }}">&#171; {{ site.title }}</a>
+     <input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
+     </div>
+     <div class="" style="text-align: right; line-height: 2em">
+         {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
+         {% for post in posts %} <a href="{{ post.url | prepend: site.baseurl }}" class="{{ post.lang }}">{{ post.lang }}</a> {% endfor %}
+
+         {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}
+         {% for page in pages %} <a href="{{ page.url | prepend: site.baseurl }}" class="{{ page.lang }}">{{ page.lang }}</a> {% endfor %}
+     </div>
+</div>
+
+<div class="one-half column" style="margin-top: 20%">
+     <article itemscope itemtype="http://schema.org/BlogPosting">
+          <header>
+               <h1 itemprop="name headline">{{ page.title }}</h1>
+               <p><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{% include date.html date=page.date %}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+          </header>
+          <hr>
+          <div>
+               <p>{{ content }}</p>
+          </div>
+     </article>
+</div>

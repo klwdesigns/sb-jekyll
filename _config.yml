@@ -1,0 +1,17 @@
+# Site settings
+title: Saint-Bisou
+description: > # this means to ignore newlines until "baseurl:"
+     en: This is Saint-Bisou.
+     fr: Voilà, c'est Saint-Bious.
+index:
+     en:
+     fr: accueil.html
+feed:
+     en: /feed.xml
+     fr: /flux.xml
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://saint-bisou.com" # the base hostname & protocol for your site
+
+
+# Build settings
+markdown: kramdown
